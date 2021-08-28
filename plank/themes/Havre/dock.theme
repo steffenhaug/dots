@@ -1,0 +1,35 @@
+[PlankTheme]
+TopRoundness=15
+BottomRoundness=0
+LineWidth=1
+OuterStrokeColor = 50;;50;;50;;150
+FillStartColor   = 50;;50;;50;;50
+FillEndColor     = 50;;50;;50;;100
+InnerStrokeColor = 50;;50;;50;;0
+
+[PlankDockTheme]
+HorizPadding=1
+TopPadding=2
+BottomPadding=2
+
+ItemPadding=2
+IndicatorSize=7
+IconShadowSize=5
+
+UrgentBounceHeight=1.6
+LaunchBounceHeight=0.3
+FadeOpacity=1
+ClickTime=300
+UrgentBounceTime=600
+LaunchBounceTime=600
+ActiveTime=300
+SlideTime=300
+FadeTime=250
+HideTime=250
+GlowSize=30
+GlowTime=10000
+GlowPulseTime=2000
+UrgentHueShift=150
+ItemMoveTime=450
+CascadeHide=true
+BadgeColor=0;;0;;0;;0

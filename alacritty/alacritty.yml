@@ -1,0 +1,18 @@
+live_config_reload: true
+
+window:
+    dynamic_padding: true
+
+    # Tmux shows dynamic title when needed.
+    dynamic_title: false
+    title: Alacritty
+
+font:
+    family: monospace
+    size: 10.0
+
+cursor:
+    unfocused_hollow: false
+
+key_bindings:
+    - { key: Return, mods: Alt, action: ToggleFullscreen }
