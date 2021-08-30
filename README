@@ -1,0 +1,8 @@
+## GRUB
+To make the TTY load at correct resolution, add
+```
+GRUB_GFXMODE=1920x1080x30,640x480,auto
+GRUB_GFXPAYLOAD_LINUX=keep
+```
+to `/etc/default/grub`. This allows grub to configure properly, and
+propagate the configuration to the kernel.

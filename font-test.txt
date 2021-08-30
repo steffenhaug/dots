@@ -1,0 +1,75 @@
+This document is made to test fonts.
+
+It contains some common examples to showcase fonts, but
+more importantly it showcases some of the cases which are
+often pathological, and renderred incorrectly in common
+monospaced fonts. Some of the "prose" is intentionally
+very wordy to test the fonts overall legibility.
+
+The quick brown fox jumped over the lazy dog.
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ ÆØÅ
+abcdefghijklmnopqrstuvwxyz æøå
+1234567890
+() [] {} <> ; ' " `
+
+    ->      Dash should line up with inequalities because of arrow operators
+    ::      Double colons should look symmetrical and pleasing
+    :=      Colon and equal should line up because of assignment operator
+
+    {xjl}   Brackets should look natural around any combination of symbols, and
+    (xjl)   needs to match the fonts x-height and cap height so it looks good
+    [xjl]   enclosing capital-, lowercase- strings with and without ascenders.
+    <xjl>   Descenders can usually hang out without looking weird.
+
+## C
+void insert(char c) {
+    char *ins_cursor = input.cursor;
+
+    while (*ins_cursor++);
+
+    do {
+        *ins_cursor = *(ins_cursor - 1);
+    } while ((--ins_cursor) - input.cursor);
+
+    *(input.cursor++) = c;
+}
+
+## Haskell
+data Entry = Entry Int Int Char String
+           | Invalid
+           deriving Show
+
+countValid :: [Entry] -> Int
+countValid = (count id) . (map check)
+
+check :: Entry -> Bool
+check Invalid = False
+check (Entry m n ch pass) =
+  (pass !! (m - 1) == ch) /= (pass !! (n - 1) == ch)
+
+-- Count the # of times a predicate succeeds over a list.
+count :: (a -> Bool) -> [a] -> Int
+count pred = length . (filter pred)
+
+## Rust
+fn set<S>(&mut self, itype: ItemType, item: S) -> Result<(), AuthError> 
+  where S: AsRef<str>
+{
+    let rc = unsafe {
+        let (item, len) = (item.as_ref().as_ptr() as _,
+                           item.as_ref().len());
+
+        /* PAM takes over ownership. */
+        let item = libc::strndup(item, len);
+        raw::pam_set_item(self.pamh, itype as _, item as _)
+    };
+
+    self.rc = ReturnCode::from(rc);
+
+    if self.rc != SUCCESS {
+        return Err(AuthError::PamRelated(rc));
+    }
+
+    Ok(())
+}

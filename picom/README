@@ -1,1 +1,5 @@
-config file in ~/.config/picom/picom.conf
+arc theme has (slight) transparency, and picom can mimic this
+and forcefully apply it to all windows for a consistent style
+
+also set up really quick fading on popup menus and slightly
+more pronounced shadows under windows.
