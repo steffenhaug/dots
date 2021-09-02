@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export CARGO_HOME:/home/st/\x2elocal/share/cargo
+SETUVAR --export EDITOR:nvim
+SETUVAR --export LESSHISTFILE:\x2d
 SETUVAR --export RUSTUP_HOME:/home/st/\x2elocal/share/rustup
 SETUVAR --export XDG_CACHE_HOME:/home/st/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/home/st/\x2econfig

@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/home/st/Downloads/Tutorial/profiling'
-let g:netrw_dirhist_6='/home/st/.local/share/plank/themes/Havre'
-let g:netrw_dirhist_5='/home/st/.local/share/plank/themes'
-let g:netrw_dirhist_4='/home/st/.config/nvim'
-let g:netrw_dirhist_3='/home/st/.config'
-let g:netrw_dirhist_2='/home/st/.config/fish/functions'
-let g:netrw_dirhist_1='/nix/store/psy2pdpc0z9fc9m9pq3p34ag0yrq5q5c-user-environment/share/applications'
