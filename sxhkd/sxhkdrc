@@ -1,0 +1,23 @@
+#
+# General keyboard clicking
+#
+{_,shift +}F5
+    xdotool click 1
+
+{_,shift +}F6
+    xdotool click 1
+
+{_,shift +}F7
+    xdotool click 1
+
+# 
+# Drop down
+#
+{_,shift +}F9
+    xdotool click 3
+
+{_,shift +}F10
+    xdotool mousemove_relative 0 {38, 72}
+
+{_,shift +}F11
+    xdotool click 1

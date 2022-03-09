@@ -1,8 +1,9 @@
-This document is made to test fonts.
+This document is made to test fonts. To check a font,
+just `cat` it or open it in vim.
 
 It contains some common examples to showcase fonts, but
 more importantly it showcases some of the cases which are
-often pathological, and renderred incorrectly in common
+often pathological, and renderred incorrectly in some
 monospaced fonts. Some of the "prose" is intentionally
 very wordy to test the fonts overall legibility.
 

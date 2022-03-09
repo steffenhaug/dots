@@ -4,7 +4,9 @@ function add_path -a DIR;
 end
 
 add_path "$XDG_DATA_HOME"/cargo/bin
+add_path "$XDG_DATA_HOME"/gcc-arm/bin
 add_path "$HOME"/.local/bin
+add_path "$HOME"/.local/bin/commander
 
 alias nv=nvim
 alias xa=exa
