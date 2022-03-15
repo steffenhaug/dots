@@ -24,6 +24,8 @@ require 'paq' {
     'nvim-telescope/telescope.nvim';
     -- Color schemes.
     'morhetz/gruvbox';
+    -- Undo-tree visualization.
+    'mbbill/undotree';
 }
 
 -- Plugin-related configuration.
@@ -59,6 +61,12 @@ for _, server in pairs(lsp_servers) do
         cababilities = capabilities,
         flags = {
             debounce_text_changes = 150,
+        },
+        -- I hope it is okay to do this for all LSPs...
+        settings = {
+            ["rust-analyzer"] = {
+                diagnostics = { disabled = {"unresolved-proc-macro"} }
+            }
         }
     }
 end
@@ -111,7 +119,7 @@ cmp.setup {
 -- Open floating diagnostics when holding the cursor still.
 -- open_float
 vim.opt.updatetime = 300
-vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float() ]]
+vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false}) ]]
 
 
 -- Key Mappings.

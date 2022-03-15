@@ -11,7 +11,8 @@ local lsp_attach = function(client, bufn)
     vim.lsp.handlers["textDocument/publishDiagnostics"] = 
         vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             -- Finally a good use for font ligatures! :-)
-            virtual_text = { spacing = 2, prefix = "<!--" }
+            virtual_text = { spacing = 2, prefix = "<!--" },
+            severity = {min=vim.diagnostic.severity.WARN}
         })
 
     -- Less intrusive autocompletion.
