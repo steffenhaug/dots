@@ -24,13 +24,22 @@ require 'paq' {
     'nvim-telescope/telescope.nvim';
     -- Color schemes.
     'morhetz/gruvbox';
+    'catppuccin/nvim';
+    'rebelot/kanagawa.nvim';
     -- Undo-tree visualization.
     'mbbill/undotree';
+    -- File tree
+    'kyazdani42/nvim-tree.lua';
 }
 
 -- Plugin-related configuration.
-vim.opt.background = 'dark'
-colorscheme 'gruvbox'
+vim.opt.background = 'dark' -- for gruvbox
+
+require 'kanagawa' .setup {
+    globalStatus = true,
+}
+
+colorscheme 'kanagawa'
 
 -- My telescope settings.
 require 'st/telescope'
@@ -39,6 +48,12 @@ require 'st/telescope'
 require "nvim-treesitter.configs" .setup {
     ensure_installed = { "haskell", "python", "rust", "lua", "c", "fish" },
     highlight        = { enable = true },
+}
+
+-- NVIM-Tree
+require 'nvim-tree' .setup {
+    open_on_setup = true, -- Open tree if VIM launched without file.
+    auto_close = true, -- Close VIM when tree is last buffer.
 }
 
 -- Language server protocol.
