@@ -4,9 +4,6 @@
 require 'ticket-to-the-moon'
 
 local lsp_attach = function(client, bufn)
-    -- Load plugins that require LSP client.
-    require "completion" .on_attach(client)
-
     -- Change formatting of diagnostic messages.
     vim.lsp.handlers["textDocument/publishDiagnostics"] = 
         vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
