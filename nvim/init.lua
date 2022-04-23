@@ -24,8 +24,6 @@ require 'paq' {
     'nvim-telescope/telescope.nvim';
     -- Color schemes.
     'morhetz/gruvbox';
-    'catppuccin/nvim';
-    'rebelot/kanagawa.nvim';
     -- Undo-tree visualization.
     'mbbill/undotree';
     -- File tree
@@ -33,20 +31,16 @@ require 'paq' {
 }
 
 -- Plugin-related configuration.
-vim.opt.background = 'dark' -- for gruvbox
-
-require 'kanagawa' .setup {
-    globalStatus = true,
-}
-
-colorscheme 'kanagawa'
+vim.opt.background = 'dark'
+vim.g.gruvbox_italic=1
+colorscheme 'gruvbox'
 
 -- My telescope settings.
 require 'st/telescope'
 
 -- Treesitter.
 require "nvim-treesitter.configs" .setup {
-    ensure_installed = { "haskell", "python", "rust", "lua", "c", "fish" },
+    ensure_installed = { "haskell", "python", "rust", "lua", "c", "fish", "glsl" },
     highlight        = { enable = true },
 }
 
