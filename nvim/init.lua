@@ -30,6 +30,7 @@ require 'paq' {
 
 -- Plugin-related configuration.
 vim.opt.background = 'dark'
+vim.g.gruvbox_italic=1
 colorscheme 'gruvbox'
 
 -- My telescope settings.
@@ -37,7 +38,7 @@ require 'st/telescope'
 
 -- Treesitter.
 require "nvim-treesitter.configs" .setup {
-    ensure_installed = { "haskell", "python", "rust", "lua", "c", "fish" },
+    ensure_installed = { "haskell", "python", "rust", "lua", "c", "fish", "glsl" },
     highlight        = { enable = true },
 }
 

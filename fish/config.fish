@@ -8,7 +8,7 @@ add_path "$XDG_DATA_HOME"/gcc-arm/bin
 add_path "$HOME"/.local/bin
 add_path "$HOME"/.local/bin/commander
 
-alias nv=nvim
+alias v=nvim
 alias xa=exa
 
 function fish_greeting
