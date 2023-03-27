@@ -3,6 +3,7 @@
 SETUVAR --export CARGO_HOME:/home/st/\x2elocal/share/cargo
 SETUVAR --export EDITOR:nvim
 SETUVAR --export LESSHISTFILE:\x2d
+SETUVAR --export LOCALE_ARCHIVE:\x1d
 SETUVAR OSRS_ALTERNATE_KEY:\x1d
 SETUVAR --export RUSTUP_HOME:/home/st/\x2elocal/share/rustup
 SETUVAR --export XDG_CACHE_HOME:/home/st/\x2ecache

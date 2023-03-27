@@ -1,6 +1,10 @@
-#
+#! /bin/sh
+
+# Shortcuts for selected applications. 
+super + o ; {f, r, o}
+    {firefox, $HOME/rl, flatpak run md.obsidian.Obsidian}
+
 # General keyboard clicking
-#
 {_,shift +}F5
     xdotool click 1
 
@@ -10,14 +14,20 @@
 {_,shift +}F7
     xdotool click 1
 
-# 
 # Drop down
-#
 {_,shift +}F9
     xdotool click 3
 
 {_,shift +}F10
-    xdotool mousemove_relative 0 {38, 72}
+    #xdotool mousemove_relative 0 90 # blackjacking
+    xdotool mousemove_relative 0 36 # second menu entry
 
 {_,shift +}F11
     xdotool click 1
+
+# ForsenCD Fish Cutting
+ctrl+bracketleft
+    xdotool click 1; xdotool mousemove_relative 0 38
+
+ctrl+bracketright
+    xdotool click 1; xdotool mousemove_relative 0 -38

@@ -1,0 +1,16 @@
+pgrep -x sxhkd > /dev/null || sxhkd &
+$HOME/.config/bspwm/autostart.sh &
+
+bspc monitor DP-0   -d      I II III IV
+bspc monitor HDMI-0 -d      V
+
+bspc config border_width    2
+bspc config window_gap      5
+
+bspc config borderless_monocle   	true
+bspc config gapless_monocle      	true
+bspc config single_monocle	 	    true
+
+bspc config pointer_modifier 		control
+bspc config pointer_action1 		move
+bspc config pointer_action2 		resize_sidie

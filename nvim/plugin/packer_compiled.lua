@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/st/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/st/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   firenvim = {
     loaded = true,
     path = "/home/st/.local/share/nvim/site/pack/packer/start/firenvim",
@@ -108,6 +113,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/st/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
+  },
+  ["jellybeans-nvim"] = {
+    loaded = true,
+    path = "/home/st/.local/share/nvim/site/pack/packer/start/jellybeans-nvim",
+    url = "https://github.com/metalelf0/jellybeans-nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/home/st/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -138,10 +153,32 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/st/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-slime"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/st/.local/share/nvim/site/pack/packer/opt/vim-slime",
+    url = "https://github.com/jpalardy/vim-slime"
+  },
+  ["vim-slime-cells"] = {
+    config = { "\27LJ\2\nÄ\3\0\0\5\0\20\00026\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0006\0\0\0009\0\1\0)\1\1\0=\1\6\0006\0\0\0009\0\1\0)\1\1\0=\1\a\0006\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\b\0'\2\t\0'\3\f\0006\4\0\0009\4\r\0049\4\14\4B\0\4\0016\0\b\0'\2\t\0'\3\15\0006\4\0\0009\4\r\0049\4\14\4B\0\4\0016\0\b\0'\2\t\0'\3\16\0006\4\0\0009\4\r\0049\4\17\4B\0\4\0016\0\b\0'\2\t\0'\3\18\0006\4\0\0009\4\r\0049\4\19\4B\0\4\1K\0\1\0$slime_cells#go_to_previous_cell\ack slime_cells#go_to_next_cell\acj\15<C-c><C-c>\26slime_cells#send_cell\afn\14<leader>x\22<Plug>SlimeConfig\15<leader>cv\6n\bmap\26slime_bracketed_paste\27slime_dont_ask_default\v^\\s*##\25slime_cell_delimiter\nkitty\17slime_target\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/st/.local/share/nvim/site/pack/packer/opt/vim-slime-cells",
+    url = "https://github.com/klafyvel/vim-slime-cells"
   }
 }
 
 time([[Defining packer_plugins]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType julia ++once lua require("packer.load")({'vim-slime-cells', 'vim-slime'}, { ft = "julia" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
