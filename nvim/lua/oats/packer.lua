@@ -56,7 +56,7 @@ require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},     -- Required
 
       -- Loading widget to show wtf is taking so long
-      use 'j-hui/fidget.nvim'
+      { 'j-hui/fidget.nvim' },
     }
   }
 end)

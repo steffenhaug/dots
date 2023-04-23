@@ -12,15 +12,12 @@ lsp.ensure_installed({
 --  * git clone
 --  * cargo xtask install --server
 
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-local lsp_attach = function(client, bufn)
+lsp.on_attach(function(client, bufn)
   -- Change formatting of diagnostic messages.
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = 
+  vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     -- Finally a good use for font ligatures! 8v)
-    virtual_text = { 
+    virtual_text = {
       spacing = 2,
       prefix = "<!--"
     },
@@ -37,15 +34,13 @@ local lsp_attach = function(client, bufn)
   map('n', 'K',   vim.lsp.buf.hover, bufopts)
   map('n', '[d', vim.diagnostic.goto_prev, bufopts)
   map('n', ']d', vim.diagnostic.goto_next, bufopts)
-end
+end)
 
 lsp.setup()
 
--- Configure servers. (Using lspconfig directly)
-require "lspconfig".rust_analyzer.setup {
-  on_attach = lsp_attach,
-  flags = lsp_flags,
-  cababilities = capabilities,
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+require('lspconfig').rust_analyzer.setup {
   settings = {
     ["rust-analyzer"] = {
       diagnostics = { disabled = {"unresolved-proc-macro"} }
@@ -53,10 +48,7 @@ require "lspconfig".rust_analyzer.setup {
   }
 }
 
-require "lspconfig".hls.setup {
-  on_attach = lsp_attach,
-  cababilities = capabilities,
-  flags = lsp_flags,
+require('lspconfig').hls.setup {
   settings = {
     haskell = {
         formattingProvider = 'stylish-haskell'
@@ -64,7 +56,7 @@ require "lspconfig".hls.setup {
   }
 }
 
-require 'fidget' .setup {
+require('fidget').setup {
   text = {
     spinner = "dots"
   }
