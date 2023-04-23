@@ -9,9 +9,6 @@ require 'telescope' .setup {
     borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }  }
 }
 
-local scope = require 'telescope.builtin'
-
-map('n', '<leader>f', scope.git_files)  -- ,f for "find"
-map('n', '<leader>rg', scope.live_grep) -- ,rg for ripgrep.
-map('n', '<leader>h', scope.help_tags)  -- VIM help files.
-
+local builtin = require 'telescope.builtin'
+map('n', '<C-p>', builtin.git_files)
+map('n', '<leader>pf', builtin.live_grep)
