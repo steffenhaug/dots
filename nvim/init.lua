@@ -1,81 +1,85 @@
 map = vim.keymap.set
 
--- Leader needs to be set before we start configuring plugins.
-vim.g.mapleader = ','
-
-require 'packer'.startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- Post-install/update hook with neovim command
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-  -- Configurations for Nvim LSP
-  use 'neovim/nvim-lspconfig'
-
-  -- Loading bar for LSP
-  use 'j-hui/fidget.nvim'
-
-  -- Telescope
-  use {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  -- Color scheme.
-  use 'morhetz/gruvbox'
-  use {
-    'metalelf0/jellybeans-nvim',
-    requires = { {'rktjmp/lush.nvim'}}
-  }
-
-  -- NVIM in Firefox text boxes.
-  use {
-    "glacambre/firenvim",
-    run = function()
-      vim.fn["firenvim#install"](0)
-    end,
-  }
-
-  -- Interact with REPLs.
-  use {
-    'klafyvel/vim-slime-cells',
-    requires = {{'jpalardy/vim-slime', ft={'julia'}}},
-    ft = {'julia'},
-    config=function ()
-      vim.g.slime_target = "kitty"
-      vim.g.slime_cell_delimiter = "^\\s*##"
-      vim.g.slime_dont_ask_default = 1
-      vim.g.slime_bracketed_paste = 1
-      map('n', '<leader>cv', '<Plug>SlimeConfig')
-
-      -- In NeoVim, for some reason, the SlimeCells commands are not available,
-      -- however, the functions are available to be called directly.
-      map('n', '<leader>x',  vim.fn['slime_cells#send_cell'])
-      map('n', '<C-c><C-c>', vim.fn['slime_cells#send_cell'])
-      map('n', 'cj', vim.fn['slime_cells#go_to_next_cell'])
-      map('n', 'ck', vim.fn['slime_cells#go_to_previous_cell'])
-    end
-  }
-
-  -- Completion: nvim-cmp requires a snippet engine, I use LuaSnip.
-  use 'L3MON4D3/LuaSnip'
-  use "hrsh7th/nvim-cmp"
-
-  -- Completion sources.
-  use "hrsh7th/cmp-nvim-lua"
-  use "hrsh7th/cmp-nvim-lsp"  
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-end)
+require("oaty")
 
 -- -- Undo-tree visualization.
 -- 'mbbill/undotree';
 
 vim.g.slime_no_mappings = 1
-vim.opt.background = 'dark'
-vim.cmd [[colorscheme gruvbox]]
+
+-- vim.opt.background = 'dark'
+-- vim.cmd [[colorscheme gruvbox]]
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
+require("vitesse").setup {
+  comment_italics = true,
+  transparnet_background = true,
+  transparent_float_background = true, -- aka pum(popup menu) background
+  reverse_visual = false,
+  dim_nc = false,
+  cmp_cmdline_disable_search_highlight_group = false, -- disable search highlight group for cmp item
+}
+local Color, colors, Group, groups, styles = require('colorbuddy').setup()
+
+-- Hacking colorbuddy themes:
+-- Use `get_captures_at_cursor` to figure out what group
+-- something is.
+--   vim.inspect(vim.treesitter.get_captures_at_cursor())
+Color.new('green2', "#65A66B")
+Color.new('yellow2', "#debd52")
+Color.new('offwhite', "#ded6bd")
+Group.new('@punctuation.bracket', colors.offwhite)
+Group.new('@punctuation.special', groups['@punctuation.bracket'])
+Group.new('@punctuation.delimiter', groups['@punctuation.bracket'])
+Group.new('@string', colors.green)
+Group.new('@number', colors.green)
+Group.new('@float', colors.green)
+Group.new('@namespace', colors.yellow2)
+Group.new('@type', colors.green2)
+Group.new('@type.builtin', groups['@type'])
+
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = '',
+    section_separators = '',
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+vim.cmd [[set noshowmode]]
+vim.cmd [[set laststatus=3]]
 
 require 'telescope' .setup {
   defaults = {
@@ -115,8 +119,7 @@ require "nvim-treesitter.configs" .setup {
 -- Language server protocol.
 -- =========================
 
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions local opts = { noremap=true, silent=true }
 map('n', '<leader>e', vim.diagnostic.open_float, opts)
 map('n', '[d', vim.diagnostic.goto_prev, opts)
 map('n', ']d', vim.diagnostic.goto_next, opts)
@@ -227,45 +230,10 @@ require 'lspconfig'.julials.setup {
   flags = lsp_flags
 }
 
-
 -- Open floating diagnostics when holding the cursor still.
 -- open_float
 vim.opt.updatetime = 300
 vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false}) ]]
-
-
--- Key Mappings.
--- =============
-
--- Hide search.
-map('n', '<leader><esc>', ':noh<CR>')
-
--- Easy navigation between splits.
-map('n', '<C-h>', '<C-w>h')
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
-
--- TAB settings.
-vim.opt.tabstop    = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab  = true
-
--- Line & cursor behaviour.
-vim.opt.number        = true            -- Show (absolute) line numbers.
-vim.opt.wrap          = false           -- Disable line wrapping.
-vim.opt.textwidth     = 60
-vim.opt.scrolloff     = 5               -- Reserve space past cursor vertically.
-vim.opt.sidescrolloff = 15              -- Reserve space past cursor horizontally.
-
-vim.opt.clipboard     = "unnamedplus"   -- Yank to clipboard.
-vim.opt.termguicolors = true            -- Assume true color terminal.
-
--- Look and feel.
-vim.opt.signcolumn = "number"           -- Signs in the number column.
-
--- Persistent undo. (NVIM has a good default location so no need to change)
-vim.opt.undofile = true
 
 require 'fidget' .setup {
   text = {
