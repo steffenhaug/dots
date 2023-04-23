@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 vim.g.slime_no_mappings = 1
 
 vim.g.slime_target = "kitty"

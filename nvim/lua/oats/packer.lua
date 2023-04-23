@@ -1,28 +1,24 @@
-require 'packer'.startup(function(use)
+require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Post-install/update hook with neovim command
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/playground' }
 
-  -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use { 'mbbill/undotree' }
+
   use {
     'ThePrimeagen/harpoon',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Modeline
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+  use { 'nvim-lualine/lualine.nvim' }
 
   -- Color schemes.
   use 'morhetz/gruvbox'
@@ -39,20 +35,28 @@ require 'packer'.startup(function(use)
     requires = { 'jpalardy/vim-slime' },
   }
 
-  -- Completion: nvim-cmp requires a snippet engine, I use LuaSnip.
-  use 'L3MON4D3/LuaSnip'
-  use "hrsh7th/nvim-cmp"
+  -- EZ LSP
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {                                      -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-  -- Completion sources.
-  use "hrsh7th/cmp-nvim-lua"
-  use "hrsh7th/cmp-nvim-lsp"  
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},     -- Required
+      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
 
-  -- Configurations for Nvim LSP
-  use 'neovim/nvim-lspconfig'
-
-  -- Loading bar for LSP
-  use 'j-hui/fidget.nvim'
-
+      -- Loading widget to show wtf is taking so long
+      use 'j-hui/fidget.nvim'
+    }
+  }
 end)

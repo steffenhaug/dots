@@ -1,4 +1,6 @@
-require 'telescope' .setup {
+local map = vim.keymap.set
+
+require('telescope').setup {
   defaults = {
     prompt_prefix = "",
     entry_prefix = "",
@@ -11,4 +13,5 @@ require 'telescope' .setup {
 
 local builtin = require 'telescope.builtin'
 map('n', '<C-p>', builtin.git_files)
-map('n', '<leader>pf', builtin.live_grep)
+map('n', '<leader>pf', builtin.find_files)
+map('n', '<leader>rg', builtin.live_grep)
