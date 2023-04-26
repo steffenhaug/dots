@@ -2,13 +2,25 @@ local map = vim.keymap.set
 
 require('telescope').setup {
   defaults = {
+    disable_devicons = true,
     prompt_prefix = "",
     entry_prefix = "",
     selection_caret = "",
     layout_config = {
       preview_width = 0.625
     },
-    borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }  }
+  },
+  pickers = {
+    find_files = {
+      disable_devicons = true
+    },
+    git_files = {
+      disable_devicons = true
+    },
+    live_grep = {
+      disable_devicons = true
+    },
+  },
 }
 
 local builtin = require 'telescope.builtin'
