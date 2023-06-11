@@ -1,0 +1,7 @@
+No real good way to move the env file out of the home dir.
+Easiest thing to do is just symlink the files individually,
+or maybe link zshenv to the home dir and then symlink
+.config/zsh here
+
+Add to MOTD by adding quotes to quotes.txt and generating
+a binsearchable file for fortune with strfile

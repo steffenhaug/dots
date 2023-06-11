@@ -35,6 +35,9 @@ require('packer').startup(function(use)
     requires = { 'jpalardy/vim-slime' },
   }
 
+  -- LaTeX input ++
+  use { 'JuliaEditorSupport/julia-vim' }
+
   -- EZ LSP
   use {
     'VonHeikemen/lsp-zero.nvim',

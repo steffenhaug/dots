@@ -1,0 +1,60 @@
+add_newline = false
+
+# Disables the line_break module, making the prompt a single line.
+[line_break]
+disabled = false
+
+[package]
+disabled=true
+
+[character]
+success_symbol = '[><>](bold green)'
+error_symbol = '[<><](bold red)'
+
+vimcmd_symbol = '[\[N\]](bold yellow)'
+vimcmd_replace_one_symbol = '[\[R\]](bold purple)'
+vimcmd_replace_symbol = '[\[R\]](bold purple)'
+vimcmd_visual_symbol = '[\[V\]](bold magenta)'
+
+[cmd_duration]
+disabled = true
+
+[directory]
+style = 'yellow'
+truncation_length = 0
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+ahead = '⇡'
+behind = '⇣'
+diverged = '⇕'
+# Zero-widh spaces to ignore some statuses.
+stashed = "​"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+
+[julia]
+disabled=true
+
+[rust]
+disabled=true
+
+[haskell]
+disabled=true
+
+[c]
+disabled=true

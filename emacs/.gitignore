@@ -1,0 +1,5 @@
+# Emacs-specific ignores
+auto-save-list
+melpa/*
+elpa/*
+customize.el

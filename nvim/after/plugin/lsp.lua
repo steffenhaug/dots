@@ -1,12 +1,16 @@
-local lsp = require('lsp-zero').preset({})
+-- NOTE: Mason draws some unicode-characters.
+-- If your font doesn't have full unicode support,
+-- you need a fallback font for unicode characters.
+-- The packages noto-fonts-* provides this.
+local lsp = require('lsp-zero').preset {}
 local map = vim.keymap.set
 
-lsp.ensure_installed({
+lsp.ensure_installed {
   'rust_analyzer',
   'hls',
   'lua_ls',
   'julials',
-})
+}
 
 -- Rust-analyzer installation as of 2021:
 --  * git clone

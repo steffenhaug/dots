@@ -34,6 +34,7 @@ local yellow2 = "#debd52"
 Color.new('green2', green2)
 Color.new('yellow2', yellow2)
 Color.new('offwhite', offwhite)
+
 Group.new('@punctuation.bracket', colors.offwhite)
 Group.new('@punctuation.special', groups['@punctuation.bracket'])
 Group.new('@punctuation.delimiter', groups['@punctuation.bracket'])

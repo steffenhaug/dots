@@ -1,0 +1,1 @@
+fortune "$ZDOTDIR/quotes.txt"
