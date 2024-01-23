@@ -1,10 +1,16 @@
 (require 'org)
 
+(use-package ess
+  :ensure t)
+
 ;; Org file organization
 (setq org-directory (expand-file-name "Org" "~")
       org-agenda-files `("thesis.org"
                          "notes.org")
       org-default-notes-file (expand-file-name "notes.org" org-directory))
+
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 1.5))
 
 ;; Org Mode Packages
 ;; -----------------
@@ -37,3 +43,11 @@
 ;; Log the time stamp when a task was completed.
 (setq org-log-done 'time
       org-log-into-drawer t)
+
+
+;; Babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((julia . t)))
+
+(setq org-confirm-babel-evaluate nil)

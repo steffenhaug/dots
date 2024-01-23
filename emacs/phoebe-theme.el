@@ -55,6 +55,7 @@ of this face takes care of that.")
 (let* ((green1      "#4d9375")
        (green2      "#65A66B")
        (green3      "#80a665")
+       (green4      "#7db583")
 
        (yellow1     "#e6cc77")
        (yellow2     "#debd52")
@@ -69,15 +70,19 @@ of this face takes care of that.")
        (red3        "#c99076")
        (red4        "#db4934")
        (red5        "#cc241d")
+       (red6        "#e06552")
 
        (cyan1       "#5da9a7")
        (cyan2       "#5eaab5")
+       (cyan3       "#73b5bf")
 
        (blue1       "#6394bf")
        (blue2       "#88a7bb")
        (blue3       "#83a598")
 
        (magenta1    "#d9739f")
+       (magenta2    "#de87ad")
+
 
        (purple1     "#6d4fa3")
        (purple6     "#5a32a3")
@@ -200,17 +205,17 @@ of this face takes care of that.")
        (prose-tag             blue1)
        (prose-verbatim        magenta1)
 
-       ;; Programming language constructs
+       ;; Programming language stuff
        (variable              orange1)
-       (builtin               red1)
+       (builtin               green4)
        (comment               black2)
-       (constant              red3)
+       (constant              tangerine)
        (docstring             yellow1)
        (docmarkup             yellow2)
-       (function              green3)
+       (function              yellow1)
        (keyword               green1)
        (macro                 red2)
-       (string                green1)
+       (string                blue3)
        (type                  green2)
        (regex                 blue1))
 
@@ -227,15 +232,18 @@ of this face takes care of that.")
                                   :foreground ,green1)))
    `(phoebe/prompt            ((t :foreground ,yellow1)))
 
-   `(phoebe/comp-match        ((t :foreground ,yellow2)))
-   `(phoebe/comp-match-1      ((t :foreground ,green1)))
-   `(phoebe/comp-match-2      ((t :foreground ,green2)))
-   `(phoebe/comp-match-3      ((t :foreground ,green3)))
+   `(phoebe/comp-match        ((t :inherit     bold)))
+   `(phoebe/comp-match-1      ((t :inherit     phoebe/comp-match
+                                  :foreground ,green1)))
+   `(phoebe/comp-match-2      ((t :inherit     phoebe/comp-match
+                                  :foreground ,green2)))
+   `(phoebe/comp-match-3      ((t :inherit     phoebe/comp-match
+                                  :foreground ,green3)))
    `(phoebe/comp-next         ((t :inherit     bold)))
    `(phoebe/comp-annotation   ((t :foreground ,black3)))
 
    ;; Foreground is unspecified to preserve `-match-*' colors!
-   `(phoebe/comp-selected     ((t :background ,bg-completion)))
+   `(phoebe/comp-selected     ((t :background ,black4)))
 
 
    ;; Language notes
@@ -430,8 +438,11 @@ of this face takes care of that.")
    `(corfu-bar                ((t :background ,white3)))
    `(corfu-border             ((t :background ,border)))
    `(corfu-default            ((t :background ,bg-dim)))
-   `(corfu-annotation         ((t :foreground ,green1)))
+   `(corfu-annotations        ((t :foreground ,green1)))
    `(corfu-deprecated         ((t :foreground ,black2)))
+
+   `(oaty/eglot-function-name-face
+     ((t :foreground ,blue1)))
 
    ;; Org basics
    `(org-verbatim ((t :inherit phoebe/prose-verb)))
@@ -585,7 +596,32 @@ of this face takes care of that.")
    `(hydra-face-red      ((t :foreground ,red4)))
    `(hydra-face-blue     ((t :foreground ,blue1)))
 
-   
+   ;; ANSI Terminal colors
+   ;; Bizarrely, vterm ignores the *-bright-* colors, and uses the :background
+   ;; color to draw bright colors.
+   ;; Bright colors are thus a little fucked, even in modus operandi.
+   `(ansi-color-black ((t :background ,black3 :foreground ,pitch-black)))
+   `(ansi-color-blue ((t :background ,blue2 :foreground ,blue1)))
+   `(ansi-color-cyan ((t :background ,cyan3 :foreground ,cyan2)))
+   `(ansi-color-green ((t :background ,green4 :foreground ,green2)))
+   `(ansi-color-magenta ((t :background ,magenta2 :foreground ,magenta1)))
+   `(ansi-color-red ((t :background ,red6 :foreground ,red4)))
+   `(ansi-color-white ((t :background ,white1 :foreground ,white2)))
+   `(ansi-color-yellow ((t :background ,yellow3 :foreground ,yellow2)))
+   ;; These are ignored by vterm
+   `(ansi-color-bright-black ((t :background ,black3 :foreground ,black3)))
+   `(ansi-color-bright-blue ((t :background ,blue2 :foreground ,blue2)))
+   `(ansi-color-bright-cyan ((t :background ,cyan3 :foreground ,cyan3)))
+   `(ansi-color-bright-green ((t :background ,green4 :foreground ,green4)))
+   `(ansi-color-bright-magenta ((t :background ,magenta2 :foreground ,magenta2)))
+   `(ansi-color-bright-red ((t :background ,red6 :foreground ,red6)))
+   `(ansi-color-bright-white ((t :background ,white1 :foreground ,white1)))
+   `(ansi-color-bright-yellow ((t :background ,yellow3 :foreground ,yellow3)))
+
+   `(ansi-color-bold ((t :inherit bold)))
+
+   ;; Eldoc
+   `(eldoc-highlight-function-argument ((t :inherit bold :underline t)))
    ))
 
 

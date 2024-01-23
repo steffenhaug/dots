@@ -1,5 +1,15 @@
 add_newline = false
 
+palette = 'phoebe'
+
+[palettes.phoebe]
+green = "#4d9375"
+red = "#db4934"
+yellow = "#FABD2F"
+purple = "#6d4fa3"
+magenta = "#d9739f"
+
+
 # Disables the line_break module, making the prompt a single line.
 [line_break]
 disabled = false

@@ -3,3 +3,4 @@ auto-save-list
 melpa/*
 elpa/*
 customize.el
+tree-sitter/

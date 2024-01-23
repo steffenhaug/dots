@@ -9,10 +9,18 @@ zstyle :compinstall filename '/home/st/.zshrc'
 autoload -Uz compinit
 compinit
 
-# Better Vim mode
-KEYTIMEOUT=1
-bindkey -v
+# Starfish + Emacs Vterm Integration
 eval "$(starship init zsh)"
+source "/home/st/.config/zsh/emacs-vterm-zsh.sh"
+
+
+
+
+
+
 
 # Added by ghcup
 [ -f "/home/st/.ghcup/env" ] && source "/home/st/.ghcup/env"
+
+# opam configuration
+[[ ! -r /home/st/.opam/opam-init/init.zsh ]] || source /home/st/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
