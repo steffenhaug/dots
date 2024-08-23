@@ -1,0 +1,60 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+      "alt-x": "command_palette::Toggle",
+      "ctrl-x k": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-g": "menu::Cancel",
+      "ctrl-x b": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-x ctrl-s": "workspace::Save",
+      "ctrl-y": "editor::Paste"
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-s": [
+        "buffer_search::Deploy",
+        {
+          "focus": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "BufferSearchBar",
+    "bindings": {
+      "enter": "buffer_search::Dismiss",
+      "ctrl-g": "buffer_search::Dismiss",
+      "ctrl-s": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
+      "ctrl-f": ["terminal::SendKeystroke", "ctrl-f"],
+      "ctrl-b": ["terminal::SendKeystroke", "ctrl-b"],
+      "ctrl-y": "terminal::Paste"
+    }
+  }
+]

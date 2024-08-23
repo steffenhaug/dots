@@ -11,13 +11,11 @@ compinit
 
 # Starfish + Emacs Vterm Integration
 eval "$(starship init zsh)"
-source "/home/st/.config/zsh/emacs-vterm-zsh.sh"
 
 
-
-
-
-
+# Emacs Integration (with Eat)
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
 # Added by ghcup
 [ -f "/home/st/.ghcup/env" ] && source "/home/st/.ghcup/env"
