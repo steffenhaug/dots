@@ -2,6 +2,7 @@ HISTFILE=$XDG_STATE_HOME/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
 
+set -o emacs
 setopt autocd
 unsetopt beep
 
